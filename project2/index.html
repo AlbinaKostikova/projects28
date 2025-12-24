@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project2</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Tasks in time</h1>
+    <form class="input-container">
+      <textarea type="text" class="taskInput" placeholder="Enter your task here"></textarea>
+      <input type="time" class="taskTime" placeholder="Set time">
+      <button type="submit" class="addBtn">Add Task</button>
+    </form>
+    <main>
+      <div class="taskList-wrapper">
+        <h2>Tasks list</h2>
+        <div class="taskList">
+        </div>
+        <div class="confirm-place">
+          <h2>Selected task</h2>
+          <div class="selected-task">Empty</div>
+        </div>
+      </div>
+    </main>
+    <div class="buttons">
+      <button type="button" class="startBtn">Start</button> 
+      <button type="button" class="finishBtn">Finish</button>
+      <button type="button" class="refuseBtn">Refuse</button>
+    </div>
+    <div class="timer">
+      <div class="hours"></div>
+      <span>:</span>
+      <div class="minutes"></div>
+      <span>:</span>
+      <div class="seconds"></div>
+    </div>
+  </div>  
+</body>
+</html>

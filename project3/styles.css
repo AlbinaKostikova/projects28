@@ -6,6 +6,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .main {
   width: 100%;
@@ -99,4 +100,81 @@ body {
   color: white;
   text-align: center;
   font-size: 30px;
+}
+
+.backTimer {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, rgb(180, 0, 0), rgb(9, 3, 3));
+  width: 500px;
+  color: white;
+}
+.backTimer-inputForm {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.backTimer-input {
+  width: 95px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.backTimer-btn {
+  width: 150px;
+  height: 40px;
+  background-color: green;
+  color: inherit;
+  border-radius: 10px;
+  border: none;
+  margin: 20px 0;
+  font-size: 16px;
+}
+.backTimer-btn:hover {
+  background-color: rgb(4, 99, 4);
+  box-shadow: -2px 2px 4px 4px rgba(6, 110, 69, 0.381);
+}
+.backTimer-counting {
+  display: none;
+  justify-content: center;
+  width: 200px;
+  height: 100px;
+  font-size: 60px;
+}
+.backTimer-message {
+  display: none;
+}
+
+.jason {
+  display: none;
+  width: 400px;
+  height: 100px;
+  position: fixed;
+  left: 100px;
+  bottom: 100px;
+  z-index: 5000;
+  gap: 10px;
+  box-shadow: 2px 2px 4px 4px rgba(9, 3, 3, 0.29);
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.jason-block {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.jason-image {
+  width: 80px;
+  height: 80px;
+  background: url('jason.webp') no-repeat center/cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: 5px;
+}
+.jason-message {
+  margin-top: -10px;;
 }

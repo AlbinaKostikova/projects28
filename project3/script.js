@@ -81,6 +81,7 @@ timerBtn.addEventListener('click', () => {
       const message = document.querySelector('.message')
       message.innerText += clicks
       message.style.display = 'flex'
+      message.style.zIndex = '3000'
       counting = false
       window.removeEventListener('click', clickHandler)
     }
@@ -152,4 +153,108 @@ createFigure.addEventListener('click', () => {
 })
 
 
-//
+
+// обратный таймер
+const backTimerWindow = document.querySelector('.backTimer')
+const timerBackMenu = document.querySelector('.timerBack')
+const backTimerInputForm = document.querySelector('.backTimer-inputForm')
+const backTimerBtn = document.querySelector('.backTimer-btn')
+const backTimerCounting = document.querySelector('.backTimer-counting')
+const backTimerMessage = document.querySelector('.backTimer-message')
+const backHours = document.querySelector('.backHours')
+const backMinutes = document.querySelector('.backMinutes')
+const backSeconds = document.querySelector('.backSeconds')
+
+let hours = null
+let minutes = null
+let seconds = null
+let backTimerInterval = null
+
+timerBackMenu.addEventListener('click', () => {
+  backTimerWindow.style.display = 'flex'
+  backTimerWindow.style.zIndex = '3000'
+  backTimerInputForm.style.display = 'flex'
+
+  backTimerBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    backTimerCounting.style.display = 'flex'
+    backTimerInputForm.style.display = 'none'
+    const timerBackInputTime = document.querySelector('.backTimer-input')
+    let parts = timerBackInputTime.value.split(':')
+    hours = Number(parts[0]) || 0
+    minutes = Number(parts[1]) || 0
+    seconds = 0
+
+    backHours.innerText = hours
+    backMinutes.innerText = minutes
+    backSeconds.innerText =  seconds
+
+    if (backTimerInterval) clearInterval(backTimerInterval)
+
+    backTimerInterval = setInterval(() => {
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        clearInterval(backTimerInterval)
+        backTimerMessage.style.display = 'flex'
+        backTimerCounting.style.display = 'none'
+        return
+      }
+      if (seconds > 0) {
+        seconds--
+      } else {
+        seconds = 59
+        if (minutes > 0) {
+          minutes--
+        } else {
+          minutes = 59
+          hours--
+        }
+      }
+      backHours.innerText = hours
+      backMinutes.innerText = minutes
+      backSeconds.innerText = seconds
+    }, 1000)
+  })
+  })
+
+
+  // рндомный звук
+  const randomSound = document.querySelector('.randomSound')
+  const sounds = [
+    './sounds/1.mp3',
+    './sounds/2.mp3',
+    './sounds/3.mp3',
+    './sounds/4.mp3',
+    './sounds/5.mp3',
+    './sounds/6.mp3',
+  ]
+  randomSound.addEventListener('click', () => {
+    const sound = sounds[Math.floor(Math.random() * sounds.length)]
+    const audio = new Audio(sound)
+    audio.play()
+  })
+
+  // cообщение
+const callMessage = document.querySelector('.callMessage')
+const jason = document.querySelector('.jason')
+const jasonText = document.querySelector('.jason-message')
+const messages = [
+  'Карты, деньги, два ствола, три банана, огурец, суп, картошка, холодец, кетчуп, яйца, майонез.',
+  'Шаг влево, шаг вправо - два шага.',
+  'Вчера играл на гитаре и выиграл.',
+  'Я всегда говорю себе, что надо перестать пить, но я не слушаю советов от алкоголиков.',
+  'Если тебе где-то не рады в рваных носках, то и в целых туда идти не стоит.'
+] 
+const notification = new Audio('./message.mp3')
+callMessage.addEventListener('click', () => {
+  notification.play()
+  jasonText.innerText = ''
+  jason.style.display = 'flex'
+  jason.style.zIndex = '4000'
+  jasonText.innerText = messages[Math.floor(Math.random() * messages.length)]
+
+  jason.style.opacity = '1'
+  setTimeout(() => {
+    jason.style.opacity = '0'
+  }, 5000)
+
+})

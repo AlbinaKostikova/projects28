@@ -2,6 +2,9 @@ const contextMenu = document.querySelector('.menu')
 // контекстное меню
 window.addEventListener('contextmenu', event => {
   event.preventDefault()
+  backTimerWindow.style.display = 'none'
+  timer.style.display = 'none'
+  backTimerMessage.style.display = 'none'
   if (event.target.classList.contains('menu')) return
   const coordinateX = event.clientX
   const coordinateY = event.clientY
@@ -255,6 +258,82 @@ callMessage.addEventListener('click', () => {
   jason.style.opacity = '1'
   setTimeout(() => {
     jason.style.opacity = '0'
-  }, 5000)
+  }, 7000)
 
+})
+
+// диораммы что бы это ни значило
+const watchDiogram = document.querySelector('.watchDiogram')
+const diogramWindow = document.querySelector('.video-player')
+const video = document.querySelector('#video')
+const nextBtn = document.querySelector('#nextBtn')
+const prevBtn = document.querySelector('#prevBtn')
+const stopBtn = document.querySelector('#stopBtn')
+const volume = document.querySelector('#volume')
+
+const videos = [
+  '/videos/gametheory.mp4',
+  '/videos/game.mp4',
+  '/videos/ageofempites.mp4',
+  '/videos/nyancat.mp4'
+]
+let index = 0
+video.src = videos[index]
+
+watchDiogram.addEventListener('click', () => {
+  diogramWindow.style.display = 'flex'
+  video.play()
+})
+nextBtn.addEventListener('click', () => {
+  index++
+  if (index >= videos.length) index = 0
+  video.src = videos[index]
+  video.play()
+})
+prevBtn.addEventListener('click', () => {
+  index--
+  if (index < 0 ) index = videos.length - 1
+  video.src = videos[index]
+  video.play()
+})
+stopBtn.addEventListener('click', () => {
+  video.pause()
+})
+volume.addEventListener('input', () => {
+  video.volume = volume.value
+})
+
+//Сброс всего
+
+const resetAll = document.querySelector('.resetAll')
+resetAll.addEventListener('click', () => {
+  backTimerWindow.style.display = 'none'
+  timer.style.display = 'none'
+  backTimerMessage.style.display = 'none'
+  jason.style.display = 'none'
+  diogramWindow.style.display = 'none'
+  timerDisplay.style.display = 'none'
+  clickField.style.zIndex = '0'
+  if (backTimerInterval) {
+    clearInterval(backTimerInterval)
+    backTimerInterval = null
+  }
+  hours = 0
+  minutes = 0
+  seconds = 0
+  backHours.innerText = ''
+  backMinutes.innerText = ''
+  backSeconds.innerText = ''
+  if (timerInterval) {
+    clearInterval(timerInterval)
+    timerInterval = null
+  }
+  document.querySelectorAll('.main > div:not(.menu):not(.video-player)').forEach(el => {
+    if (!el.classList.contains('backTimer') && !el.classList.contains('message')) el.remove()
+  })
+  counting = false
+  video.pause()
+  video.currentTime = 0
+  index = 0
+  video.src = videos[index]
 })

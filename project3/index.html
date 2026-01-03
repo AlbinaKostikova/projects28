@@ -26,11 +26,14 @@
       </div>
       <div class="timerDisplay"></div>
       <div class="clickField"></div>
-      <div class="message">Время вышло!<br> Вы накликали : </div>
+      <div class="message">
+        Время вышло!<br />
+        Вы накликали :
+      </div>
       <div class="backTimer">
-        <div class='backTimer-inputForm'>
+        <div class="backTimer-inputForm">
           <h2>Введите время</h2>
-          <input class="backTimer-input" type="time">
+          <input class="backTimer-input" type="time" />
           <button class="backTimer-btn">Поехали!</button>
         </div>
         <div class="backTimer-counting">
@@ -48,6 +51,18 @@
           <h3>Вам пишет : Jason Statham</h3>
           <p class="jason-message"></p>
         </div>
+      </div>
+      <div class="video-player">
+        <video id="video" loop playsinline>
+          <source src="/videos/nyancat.mp4" />
+        </video>
+        <div class="controls">
+          <button id="prevBtn">⏮ Предыдущее</button>
+          <button id="stopBtn">⏹ Стоп</button>
+          <button id="nextBtn">⏭ Следующее</button>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="1" />
+        </div>
+        
       </div>
     </div>
   </body>

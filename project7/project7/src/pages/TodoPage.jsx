@@ -1,4 +1,8 @@
-
+import Header from "../components/Header"
+import Search from "../components/Search"
+import Sort from "../components/SortSelect"
+import TodoList from "../components/TodoList"
+import { useState } from 'react'
 
 function TodoPage() {
   const [todos, setTodos] = useState([])
@@ -14,7 +18,7 @@ function TodoPage() {
       )
     }
     if (sort === 'date') {
-      result.sort((a, b) => b.creratedAt - a.createdAt)
+      result.sort((a, b) => b.createdAt - a.createdAt)
     }
     if (sort === 'alphabet') {
       result.sort((a, b) => a.text.localeCompare(b.text))
@@ -32,13 +36,23 @@ function TodoPage() {
     }
     setTodos(prev => [newTodo, ...prev])
   }
+  function toggleTodo(id) {
+    setTodos(prev => prev.map(todo => todo.id === id 
+      ? { ...todo, completed: !todo.completed}
+      : todo
+    ))
+  }
+  function deleteTodo(id) {
+    setTodos(prev => prev.filter(todo => todo.id !== id))
+  }
 
   return (
-    <>
+    <div className="wrapper">
       <Header onAddTodo={addTodo} />
       <Search value={search} onChange={setSearch} />
       <Sort value={sort} onChange={setSort} />
-      <TodoList todos={visibleTodos} />
-    </>
+      <TodoList todos={visibleTodos} onToggle={toggleTodo} onDelete={deleteTodo}/>
+    </div>
   )
 }
+export default TodoPage

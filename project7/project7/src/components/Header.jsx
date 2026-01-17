@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 function Header({ onAddTodo }) {
   const [value, setValue] = useState('')
+
   const handleSubmit = () => {
     const text = value.trim()
     if (!text) return
@@ -15,7 +16,7 @@ function Header({ onAddTodo }) {
   }
   return (
     <div className="container">
-      <div className="logo"></div>
+      <div className="logo"><img src="/logo.jpg" alt="Logo" /></div>
       <div className="input-container">
         <input
           type="text"
@@ -25,8 +26,8 @@ function Header({ onAddTodo }) {
           onChange={e => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button type="button" className="addInputBtn">
-          onClick={handleSubmit}
+        <button type="button" className="addInputBtn"
+          onClick={handleSubmit}>Добавить
         </button>
       </div>
     </div>

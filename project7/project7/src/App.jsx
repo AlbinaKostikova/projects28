@@ -1,10 +1,11 @@
 import react from 'react'
 import './index.css';
+import TodoPage from './pages/TodoPage';
 
 function App() {
   return (
     <div>
-     <Header />
+      <TodoPage />
     </div>
   );
 }

@@ -2,12 +2,24 @@ import Header from "../components/Header"
 import Search from "../components/Search"
 import Sort from "../components/SortSelect"
 import TodoList from "../components/TodoList"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+const STORAGE_KEY = 'todos'
 
 function TodoPage() {
   const [todos, setTodos] = useState([])
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('date')
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    if (savedTodos) {
+      setTodos(savedTodos)
+    }
+  }, [])
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  }, [todos])
 
   function applySearchAndSort(todos, search, sort) {
     let result = [...todos]
@@ -32,7 +44,7 @@ function TodoPage() {
       id: Date.now(), 
       text,
       completed: false,
-      createdAt: new Date()
+      createdAt: Date.now()
     }
     setTodos(prev => [newTodo, ...prev])
   }
@@ -45,13 +57,18 @@ function TodoPage() {
   function deleteTodo(id) {
     setTodos(prev => prev.filter(todo => todo.id !== id))
   }
-
+  function editTodo(id, newText) {
+    setTodos(prev => prev.map(todo => todo.id === id 
+      ? {...todo, text: newText}
+      : todo)
+    )
+  }
   return (
     <div className="wrapper">
       <Header onAddTodo={addTodo} />
       <Search value={search} onChange={setSearch} />
       <Sort value={sort} onChange={setSort} />
-      <TodoList todos={visibleTodos} onToggle={toggleTodo} onDelete={deleteTodo}/>
+      <TodoList todos={visibleTodos} onToggle={toggleTodo} onDelete={deleteTodo} onEdit={editTodo} />
     </div>
   )
 }

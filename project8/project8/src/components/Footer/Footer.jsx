@@ -1,31 +1,37 @@
+import './Footer.css'
+import logoImg from '../../assets/images/photo.png.webp'
+import facebookIcon from '../../assets/images/Facebook2.svg'
+import twitterIcon from '../../assets/images/Twitter2.svg'
+import instagramIcon from '../../assets/images/Instagram2.svg'
+import telegramIcon from '../../assets/images/Telegram2.svg'
+
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-block summary">
-        <img className="logo" src="/project8/src/assets/images/photo.png.webp" alt="logo" />
+        <img className="logo" src={logoImg} alt="logo" />
         <div className="footer-icons">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">
-          <img src="/project8/src/assets/images/Facebook2.svg" alt="Facebook"></img>
+          <img src={facebookIcon} alt="Facebook"></img>
           </a>
           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">
-          <img src="/project8/src/assets/images/Twitter2.svg" alt="Twitter"></img>
+          <img src={twitterIcon} alt="Twitter"></img>
           </a>
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
-          <img src="/project8/src/assets/images/Instagram2.svg" alt="Instagram"></img>
+          <img src={instagramIcon} alt="Instagram"></img>
           </a>
           <a href="https://www.telegram.org" target="_blank" rel="noopener noreferrer" title="Telegram">
-          <img src="/project8/src/assets/images/Telegram2.svg" alt="Telegram"></img>
+          <img src={telegramIcon} alt="Telegram"></img>
           </a>
         </div>
         <p>© 2021 Психологический центр "ОСОЗНАННОСТЬ"<br/>Под термином «психотерапия» на сайте подразумевается психологическое консультирование. Психологи и Психотерапевты не оказывают медицинских услуг на площадке.</p>
       </div>
       <div className="footer-block clinic">
         <h4>Клиника</h4>
-        <a href="">Первый прием</a>
-        <a>О нас</a>
-        <a>Отзывы</a>
-        <a>Полезная Информация</a>
-        <a>Вопрос-Ответ</a>
+        <a href="/first-visit">Первый прием</a>
+        <a href="/favorites">Избранные доктора</a>
+        <a href='/team'>Наша команда</a>
+        <a href="/reviews">Отзывы</a>
       </div>
       <div className="footer-block directions">
         <h4>Направления работы</h4>

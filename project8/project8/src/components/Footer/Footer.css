@@ -1,0 +1,45 @@
+.footer {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  background-color: #54c0c2;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.footer-icons img {
+  width: 30px;
+  height: 30px;
+}
+.footer-block.summary {
+  max-width: 30%;
+  font-size: 16px;
+}
+.footer-block.clinic a {
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: black;
+  text-decoration: none;
+}
+
+.footer-block.clinic a:hover {
+  color: rgba(0, 0, 0, 0.559);
+  transform: scale(1.1); 
+}
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-block.summary {
+    max-width: 100%;
+  }
+}

@@ -17,12 +17,13 @@
   align-items: center;
 }
 .footer-icons img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 .footer-block.summary {
   max-width: 30%;
   font-size: 16px;
+  gap: 20px;
 }
 .footer-block.clinic a {
   transition: transform 0.2s ease, color 0.2s ease;

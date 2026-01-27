@@ -17,6 +17,57 @@
   flex-direction: column;
   gap: 30px;
 }
+
+.main-img {
+  width: 500px;
+  height: auto;
+}
+.main-introduce {
+  display: flex;
+  gap: 50px;
+  padding: 50px;
+
+}
+.hp-first {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-left: 50px;
+}
+.hp-first__title {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.left-part {
+  width: 200px;
+}
+.right-part {
+  margin-top: 45px;
+  width: 250px;
+  text-indent: -40px;
+}
+.hp-text {
+  position: relative;
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 16px;  
+  color: rgba(46, 20, 20, 0.875);
+}
+.hp-text::before {
+  content: '';
+  display: block;
+  height: 400px;
+  width: 450px;
+  background-color: rgba(54, 35, 35, 0.103);
+  position: absolute;
+  top: -100px;
+  left: -500px;
+  z-index: -1
+}
+
+
 .side-menu {
   position: fixed;
   top: 0;
